@@ -10,15 +10,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// branchCmd represents the branch command
-var branchCmd = &cobra.Command{
-	Use:   "br",
-	Short: "List and manage Git branches",
-	Long: `Branch command lists, creates, or deletes branches in a Git repository.
-This command displays the list of branches available in the repository,
-with an option to create or delete specific branches.`,
+// branchRemoteCmd represents the branchRemote command
+var branchRemoteCmd = &cobra.Command{
+	Use:   "brr",
+	Short: "List and select remote Git branches",
+	Long: `BranchRemote command lists all branches in your remote Git repository and provides an interface to select a branch.
+This command is useful for quickly browsing and selecting from the branches that exist in your remote repositories without the need to manually fetch or pull the updates.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		branches, err := getBranches()
+		branches, err := getRemoteBranches()
 		if err != nil {
 			return err
 		}
@@ -40,15 +39,15 @@ with an option to create or delete specific branches.`,
 }
 
 func init() {
-	rootCmd.AddCommand(branchCmd)
+	rootCmd.AddCommand(branchRemoteCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// branchCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// branchRemoteCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// branchCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// branchRemoteCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
