@@ -1,4 +1,4 @@
-module git-ext
+module github.com/Namacha411/git-ext
 
 go 1.21.6
 
